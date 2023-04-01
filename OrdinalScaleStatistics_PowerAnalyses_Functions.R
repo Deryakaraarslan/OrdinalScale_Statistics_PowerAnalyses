@@ -178,7 +178,7 @@ powerEstimator=function(dataset, powerlevel=80, refgroup=NULL, powergroups=NULL,
   powergroups=powergroups[!powergroups%in%refgroup]}
   
   resp='y'
-  while (sum(tolower(powergroups) %in% as.vector(unique(dataset$Exposures)[!tolower(unique(dataset$Exposures))%in%tolower(refgroup)]))==0) { 
+  while (sum(tolower(powergroups) %in% tolower(as.vector(unique(dataset$Exposures)[!tolower(unique(dataset$Exposures))%in%tolower(refgroup)])))==0) { 
     powergroups=as.character(readline(prompt='Names of the test groups for power analyses are not found in your data. Please, provide a valid name:  '))
     resp=tolower(as.character(readline(prompt = 'Wanna add more groups: yes (Y) / no (N)   ')))
     while (!resp %in% c('y','n')) { resp=tolower(as.character(readline(prompt = 'Wanna add more groups: yes (Y) / no (N)   ')))}
